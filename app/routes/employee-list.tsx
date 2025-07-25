@@ -6,7 +6,9 @@ import type { Route } from "./+types/employee-list";
 import { $employees, employeeActions, type Employee } from "~/stores/employeeStore";
 import { EmployeeTable } from "~/components/employees/EmployeeTable";
 import { EmptyState } from "~/components/employees/EmptyState";
+import { SearchBar } from "~/components/employees/SearchBar";
 import { Button } from "~/components/ui/button";
+import { useGlobalSearch } from "~/hooks/useGlobalSearch";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,6 +20,14 @@ export function meta({}: Route.MetaArgs) {
 export default function EmployeeList() {
   const employees = useStore($employees);
   const employeeList: Employee[] = Object.values(employees);
+  
+  const {
+    searchQuery,
+    setSearchQuery,
+    filteredEmployees,
+    resultCount,
+    isSearching
+  } = useGlobalSearch(employeeList);
 
   const handleEdit = (employee: Employee) => {
     toast.info("Fonctionnalité de modification à venir", {
@@ -42,7 +52,11 @@ export default function EmployeeList() {
           <div>
             <h1 className="text-3xl font-bold">Liste des Employés</h1>
             <div className="text-sm text-muted-foreground mt-1">
-              {employeeList.length} employé{employeeList.length !== 1 ? 's' : ''}
+              {isSearching ? (
+                `${resultCount} résultat${resultCount > 1 ? 's' : ''} sur ${employeeList.length} employé${employeeList.length > 1 ? 's' : ''}`
+              ) : (
+                `${employeeList.length} employé${employeeList.length !== 1 ? 's' : ''}`
+              )}
             </div>
           </div>
           <Link to="/">
@@ -56,11 +70,28 @@ export default function EmployeeList() {
         {employeeList.length === 0 ? (
           <EmptyState />
         ) : (
-          <EmployeeTable
-            employees={employeeList}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
+          <div className="space-y-4">
+            <SearchBar
+              value={searchQuery}
+              onChange={setSearchQuery}
+              placeholder="Rechercher par nom, département, adresse..."
+              resultCount={resultCount}
+              isSearching={isSearching}
+            />
+            
+            {isSearching && resultCount === 0 ? (
+              <EmptyState 
+                title="Aucun employé trouvé"
+                description={`Aucun résultat pour "${searchQuery}". Essayez de modifier votre recherche.`}
+              />
+            ) : (
+              <EmployeeTable
+                employees={filteredEmployees}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
+            )}
+          </div>
         )}
       </div>
     </div>
