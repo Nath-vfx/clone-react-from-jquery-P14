@@ -17,7 +17,7 @@ export function useGlobalSearch(employees: Employee[]) {
       const formatDate = (date: Date | string) => {
         try {
           const dateObj = date instanceof Date ? date : new Date(date);
-          return format(dateObj, 'dd/MM/yyyy');
+          return format(dateObj, 'MM/dd/yyyy');
         } catch {
           return '';
         }

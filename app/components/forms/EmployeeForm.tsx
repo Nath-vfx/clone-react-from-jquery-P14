@@ -95,13 +95,13 @@ export function EmployeeForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       employeeActions.addEmployee(values);
-      toast.success("Employé ajouté avec succès!", {
-        description: `${values.firstName} ${values.lastName} a été ajouté au département ${values.department}.`,
+      toast.success("Employee added successfully!", {
+        description: `${values.firstName} ${values.lastName} has been added to the ${values.department} department.`,
       });
       form.reset();
     } catch (error) {
-      toast.error("Erreur lors de l'ajout de l'employé", {
-        description: error instanceof Error ? error.message : "Une erreur inconnue s'est produite",
+      toast.error("Error adding employee", {
+        description: error instanceof Error ? error.message : "An unknown error occurred",
       });
     }
   }

@@ -57,7 +57,7 @@ export function PaginatedEmployeeTable({
           {/* Results info and page size selector */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-muted-foreground">
             <div>
-              Affichage de {startIndex} à {endIndex} sur {totalItems} résultat{totalItems > 1 ? 's' : ''}
+              Showing {startIndex} to {endIndex} of {totalItems} result{totalItems > 1 ? 's' : ''}
             </div>
             <PageSizeSelector
               pageSize={pageSize}

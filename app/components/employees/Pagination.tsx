@@ -40,7 +40,7 @@ export function Pagination({
         size="sm"
         onClick={onFirstPage}
         disabled={!hasPreviousPage}
-        title="Première page"
+        title="First page"
       >
         <ChevronsLeft className="h-4 w-4" />
       </Button>
@@ -51,7 +51,7 @@ export function Pagination({
         size="sm"
         onClick={onPreviousPage}
         disabled={!hasPreviousPage}
-        title="Page précédente"
+        title="Previous page"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
@@ -107,7 +107,7 @@ export function Pagination({
         size="sm"
         onClick={onNextPage}
         disabled={!hasNextPage}
-        title="Page suivante"
+        title="Next page"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>
@@ -118,7 +118,7 @@ export function Pagination({
         size="sm"
         onClick={onLastPage}
         disabled={!hasNextPage}
-        title="Dernière page"
+        title="Last page"
       >
         <ChevronsRight className="h-4 w-4" />
       </Button>

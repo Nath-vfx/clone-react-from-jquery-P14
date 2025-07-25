@@ -30,8 +30,8 @@ export default function EmployeeList() {
   } = useGlobalSearch(employeeList);
 
   const handleEdit = (employee: Employee) => {
-    toast.info("Fonctionnalité de modification à venir", {
-      description: `Modification de ${employee.firstName} ${employee.lastName}`,
+    toast.info("Edit functionality coming soon", {
+      description: `Editing ${employee.firstName} ${employee.lastName}`,
     });
   };
 
@@ -39,8 +39,8 @@ export default function EmployeeList() {
     const employee = employeeActions.getEmployeeById(employeeId);
     if (employee) {
       employeeActions.deleteEmployee(employeeId);
-      toast.success("Employé supprimé", {
-        description: `${employee.firstName} ${employee.lastName} a été supprimé.`,
+      toast.success("Employee deleted", {
+        description: `${employee.firstName} ${employee.lastName} has been deleted.`,
       });
     }
   };
@@ -50,19 +50,19 @@ export default function EmployeeList() {
       <div className="container mx-auto py-6">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold">Liste des Employés</h1>
+            <h1 className="text-3xl font-bold">Employee List</h1>
             <div className="text-sm text-muted-foreground mt-1">
               {isSearching ? (
-                `${resultCount} résultat${resultCount > 1 ? 's' : ''} sur ${employeeList.length} employé${employeeList.length > 1 ? 's' : ''}`
+                `${resultCount} result${resultCount > 1 ? 's' : ''} of ${employeeList.length} employee${employeeList.length > 1 ? 's' : ''}`
               ) : (
-                `${employeeList.length} employé${employeeList.length !== 1 ? 's' : ''}`
+                `${employeeList.length} employee${employeeList.length !== 1 ? 's' : ''}`
               )}
             </div>
           </div>
           <Link to="/">
             <Button className="flex items-center gap-2">
               <Plus className="h-4 w-4" />
-              Ajouter un employé
+              Add Employee
             </Button>
           </Link>
         </div>
@@ -74,15 +74,15 @@ export default function EmployeeList() {
             <SearchBar
               value={searchQuery}
               onChange={setSearchQuery}
-              placeholder="Rechercher par nom, département, adresse..."
+              placeholder="Search by name, department, address..."
               resultCount={resultCount}
               isSearching={isSearching}
             />
             
             {isSearching && resultCount === 0 ? (
               <EmptyState 
-                title="Aucun employé trouvé"
-                description={`Aucun résultat pour "${searchQuery}". Essayez de modifier votre recherche.`}
+                title="No employees found"
+                description={`No results for "${searchQuery}". Try modifying your search.`}
               />
             ) : (
               <PaginatedEmployeeTable

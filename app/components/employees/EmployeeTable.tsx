@@ -25,35 +25,35 @@ export function EmployeeTable({ employees, onEdit, onDelete }: EmployeeTableProp
         <TableHeader>
           <TableRow>
             <SortableHeader
-              title="Employé"
+              title="Employee"
               sortKey="lastName"
               currentSortKey={sortConfig.key}
               sortDirection={sortConfig.direction}
               onSort={requestSort}
             />
             <SortableHeader
-              title="Département"
+              title="Department"
               sortKey="department"
               currentSortKey={sortConfig.key}
               sortDirection={sortConfig.direction}
               onSort={requestSort}
             />
             <SortableHeader
-              title="Date de naissance"
+              title="Date of Birth"
               sortKey="dateOfBirth"
               currentSortKey={sortConfig.key}
               sortDirection={sortConfig.direction}
               onSort={requestSort}
             />
             <SortableHeader
-              title="Date d'embauche"
+              title="Start Date"
               sortKey="startDate"
               currentSortKey={sortConfig.key}
               sortDirection={sortConfig.direction}
               onSort={requestSort}
             />
             <SortableHeader
-              title="Adresse"
+              title="Address"
               sortKey="city"
               currentSortKey={sortConfig.key}
               sortDirection={sortConfig.direction}

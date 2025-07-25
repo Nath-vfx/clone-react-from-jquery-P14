@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { fr } from "date-fns/locale";
 import { type Employee } from "~/stores/employeeStore";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "~/components/ui/button";
@@ -52,11 +51,11 @@ const calculateYearsOfService = (startDate: Date | string): string => {
   const serviceMonths = totalMonths % 12;
   
   if (serviceYears === 0) {
-    return `${serviceMonths} mois`;
+    return `${serviceMonths} month${serviceMonths > 1 ? 's' : ''}`;
   } else if (serviceMonths === 0) {
-    return `${serviceYears} an${serviceYears > 1 ? 's' : ''}`;
+    return `${serviceYears} year${serviceYears > 1 ? 's' : ''}`;
   } else {
-    return `${serviceYears} an${serviceYears > 1 ? 's' : ''} ${serviceMonths} mois`;
+    return `${serviceYears} year${serviceYears > 1 ? 's' : ''} ${serviceMonths} month${serviceMonths > 1 ? 's' : ''}`;
   }
 };
 
@@ -79,13 +78,13 @@ export function EmployeeRow({ employee, onEdit, onDelete }: EmployeeRowProps) {
       </TableCell>
       <TableCell>
         <div>
-          <div>{format(ensureDate(employee.dateOfBirth), "dd/MM/yyyy", { locale: fr })}</div>
-          <div className="text-sm text-muted-foreground">{age} ans</div>
+          <div>{format(ensureDate(employee.dateOfBirth), "MM/dd/yyyy")}</div>
+          <div className="text-sm text-muted-foreground">{age} years old</div>
         </div>
       </TableCell>
       <TableCell>
         <div>
-          <div>{format(ensureDate(employee.startDate), "dd/MM/yyyy", { locale: fr })}</div>
+          <div>{format(ensureDate(employee.startDate), "MM/dd/yyyy")}</div>
           <div className="text-sm text-muted-foreground">{yearsOfService}</div>
         </div>
       </TableCell>
@@ -101,10 +100,10 @@ export function EmployeeRow({ employee, onEdit, onDelete }: EmployeeRowProps) {
       <TableCell>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={onEdit}>
-            Modifier
+            Edit
           </Button>
           <Button variant="destructive" size="sm" onClick={onDelete}>
-            Supprimer
+            Delete
           </Button>
         </div>
       </TableCell>

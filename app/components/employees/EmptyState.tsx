@@ -6,8 +6,8 @@ interface EmptyStateProps {
 }
 
 export function EmptyState({ 
-  title = "Aucun employé trouvé", 
-  description = "Commencez par ajouter des employés à votre base de données." 
+  title = "No employees found", 
+  description = "Start by adding employees to your database." 
 }: EmptyStateProps) {
   return (
     <div className="text-center py-12">

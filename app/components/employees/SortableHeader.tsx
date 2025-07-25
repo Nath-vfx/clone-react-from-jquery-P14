@@ -39,8 +39,8 @@ export function SortableHeader({
   };
 
   const getSortLabel = () => {
-    if (!isActive || !sortDirection) return "Trier";
-    return sortDirection === 'asc' ? "Tri croissant" : "Tri décroissant";
+    if (!isActive || !sortDirection) return "Sort";
+    return sortDirection === 'asc' ? "Sort ascending" : "Sort descending";
   };
 
   return (

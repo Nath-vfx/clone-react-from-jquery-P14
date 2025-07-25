@@ -13,7 +13,7 @@ interface SearchBarProps {
 export function SearchBar({ 
   value, 
   onChange, 
-  placeholder = "Rechercher un employé...",
+  placeholder = "Search employees...",
   resultCount,
   isSearching = false
 }: SearchBarProps) {
@@ -38,7 +38,7 @@ export function SearchBar({
             size="sm"
             onClick={handleClear}
             className="absolute right-1 top-1/2 h-auto -translate-y-1/2 p-1 hover:bg-transparent"
-            title="Effacer la recherche"
+            title="Clear search"
           >
             <X className="h-4 w-4 text-muted-foreground hover:text-foreground" />
           </Button>
@@ -48,9 +48,9 @@ export function SearchBar({
       {isSearching && (
         <div className="mt-2 text-sm text-muted-foreground">
           {resultCount === 0 ? (
-            "Aucun résultat trouvé"
+            "No results found"
           ) : (
-            `${resultCount} résultat${resultCount > 1 ? 's' : ''} trouvé${resultCount > 1 ? 's' : ''}`
+            `${resultCount} result${resultCount > 1 ? 's' : ''} found`
           )}
         </div>
       )}
