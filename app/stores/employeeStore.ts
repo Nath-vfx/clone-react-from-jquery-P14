@@ -13,8 +13,47 @@ export interface Employee {
   zipCode: string;
 }
 
+const STORAGE_KEY = 'hrnet-employees';
+
+// Helper functions for localStorage
+const saveToLocalStorage = (employees: Record<string, Employee>) => {
+  if (typeof window !== 'undefined') {
+    try {
+      const serialized = JSON.stringify(employees, (_, value) => {
+        if (value instanceof Date) {
+          return { __type: 'Date', value: value.toISOString() };
+        }
+        return value;
+      });
+      localStorage.setItem(STORAGE_KEY, serialized);
+    } catch (error) {
+      console.error('Failed to save employees to localStorage:', error);
+    }
+  }
+};
+
+const loadFromLocalStorage = (): Record<string, Employee> => {
+  if (typeof window !== 'undefined') {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored, (_, value) => {
+          if (value && value.__type === 'Date') {
+            return new Date(value.value);
+          }
+          return value;
+        });
+        return parsed;
+      }
+    } catch (error) {
+      console.error('Failed to load employees from localStorage:', error);
+    }
+  }
+  return {};
+};
+
 // Store for all employees
-export const $employees = map<Record<string, Employee>>({});
+export const $employees = map<Record<string, Employee>>(loadFromLocalStorage());
 
 // Store for loading state
 export const $isLoading = atom(false);
@@ -95,7 +134,8 @@ export const employeeActions = {
 // Computed store for employees count
 export const $employeesCount = atom(0);
 
-// Update count when employees change
+// Update count when employees change and save to localStorage
 $employees.subscribe((employees) => {
   $employeesCount.set(Object.keys(employees).length);
+  saveToLocalStorage(employees);
 });
