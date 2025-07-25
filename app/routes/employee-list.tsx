@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { Link } from "react-router";
 import { toast } from "sonner";
-import { ArrowLeft, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import type { Route } from "./+types/employee-list";
 import { $employees, employeeActions, type Employee } from "~/stores/employeeStore";
 import { EmployeeTable } from "~/components/employees/EmployeeTable";
