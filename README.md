@@ -1,18 +1,17 @@
-# Welcome to React Router!
+# HRnet - Employee Management System
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern employee management application built with React Router, providing a comprehensive solution for managing employee data with advanced search, filtering, and pagination capabilities.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 👥 **Employee Management**: Add, view, and delete employees
+- 🔍 **Advanced Search**: Search employees by name, department, or address
+- 📊 **Data Table**: Sortable columns with pagination support
+- 🎨 **Modern UI**: Built with TailwindCSS and Radix UI components
+- 📱 **Responsive Design**: Works seamlessly on desktop and mobile
+- 💾 **Local Storage**: Persistent data storage in the browser
+- 🔒 **TypeScript**: Full type safety throughout the application
+- ⚡️ **Fast Development**: Hot Module Replacement (HMR) support
 
 ## Getting Started
 
@@ -33,6 +32,60 @@ npm run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
+
+## Usage
+
+### Employee Management
+
+The application provides two main pages:
+
+#### Home Page (`/`)
+- **Add New Employee**: Complete form with personal information, address, and employment details
+- **Form Validation**: Real-time validation with error messages
+- **Date Picker**: User-friendly date selection for birth date and start date
+- **Department Selection**: Dropdown with predefined departments
+- **State Selection**: US states dropdown for address information
+
+#### Employee List Page (`/employee-list`)
+- **View All Employees**: Comprehensive table with employee information
+- **Search Functionality**: Global search across name, department, and address fields
+- **Sorting**: Click column headers to sort data (ascending/descending)
+- **Pagination**: Navigate through large datasets with customizable page sizes
+- **Delete Employees**: Remove employees with confirmation
+- **Employee Count**: Real-time count of total and filtered employees
+
+### Key Features
+
+#### Search and Filtering
+- **Global Search**: Type in the search bar to filter employees by:
+  - First name and last name
+  - Department
+  - Address components (street, city, state, zip code)
+- **Real-time Results**: Search results update as you type
+- **Clear Indicators**: Shows result count and total employees
+
+#### Data Table Features
+- **Sortable Columns**: Click any column header to sort
+- **Pagination Controls**: 
+  - Navigate between pages
+  - Choose page size (10, 25, 50, 100 entries)
+  - Jump to first/last page
+- **Responsive Design**: Table adapts to different screen sizes
+- **Employee Information Display**:
+  - Personal details (name, age, years of service)
+  - Contact information
+  - Department with color-coded badges
+  - Complete address
+
+#### Data Persistence
+- **Local Storage**: All employee data is stored in browser's local storage
+- **Automatic Saving**: Changes are saved immediately
+- **Data Retention**: Data persists between browser sessions
+
+### Navigation
+- **Home to Employee List**: Click "View Employees" button on home page
+- **Employee List to Home**: Click "Add Employee" button on employee list page
+- **Responsive Navigation**: Works seamlessly on all device sizes
 
 ## Building for Production
 
@@ -78,10 +131,45 @@ Make sure to deploy the output of `npm run build`
 │   └── server/    # Server-side code
 ```
 
+## Technology Stack
+
+### Frontend
+- **React 19**: Latest React version with modern features
+- **React Router 7**: File-based routing and server-side rendering
+- **TypeScript**: Full type safety and better developer experience
+- **TailwindCSS 4**: Utility-first CSS framework for styling
+- **Radix UI**: Accessible, unstyled UI components
+- **Lucide React**: Beautiful, customizable icons
+
+### State Management
+- **Nanostores**: Lightweight state management solution
+- **React Hook Form**: Forms with validation
+- **Zod**: Runtime type validation
+
+### UI Components
+- **Sonner**: Toast notifications
+- **React Day Picker**: Date selection component
+- **Class Variance Authority**: Dynamic class name generation
+
+### Development Tools
+- **Vite**: Fast build tool and development server
+- **Hot Module Replacement**: Instant updates during development
+- **TypeScript Compiler**: Type checking and code generation
+
+### Data Storage
+- **Browser Local Storage**: Client-side data persistence
+- **JSON Serialization**: Efficient data storage format
+
 ## Styling
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+This application uses [Tailwind CSS](https://tailwindcss.com/) for styling with a custom design system built on top of Radix UI components. The styling includes:
+
+- **Responsive Design**: Mobile-first approach with responsive breakpoints
+- **Dark Mode Support**: Built-in theme switching capabilities
+- **Accessible Components**: ARIA-compliant UI elements
+- **Custom Color Palette**: Consistent color scheme throughout the app
+- **Component Variants**: Flexible styling with class-variance-authority
 
 ---
 
-Built with ❤️ using React Router.
+**HRnet** - A modern employee management system built with React Router, demonstrating best practices for building scalable React applications with TypeScript, advanced state management, and beautiful UI components.
