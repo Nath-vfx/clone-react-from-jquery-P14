@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Plus } from "lucide-react";
 import type { Route } from "./+types/employee-list";
 import { $employees, employeeActions, type Employee } from "~/stores/employeeStore";
-import { EmployeeTable } from "~/components/employees/EmployeeTable";
+import { PaginatedEmployeeTable } from "~/components/employees/PaginatedEmployeeTable";
 import { EmptyState } from "~/components/employees/EmptyState";
 import { SearchBar } from "~/components/employees/SearchBar";
 import { Button } from "~/components/ui/button";
@@ -85,7 +85,7 @@ export default function EmployeeList() {
                 description={`Aucun résultat pour "${searchQuery}". Essayez de modifier votre recherche.`}
               />
             ) : (
-              <EmployeeTable
+              <PaginatedEmployeeTable
                 employees={filteredEmployees}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
